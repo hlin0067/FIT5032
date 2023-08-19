@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\week3",
+    "\\week3\\week3",
+    "\\week3\\week3\\Views",
+    "\\week3\\week3\\Views\\Home"
   ],
-  "SelectedNode": "\\C:\\Users\\hlin0067\\Source\\Repos\\FIT5032",
+  "SelectedNode": "\\week3\\week3\\Views\\Home\\About.cshtml",
   "PreviewInSolutionExplorer": false
 }
