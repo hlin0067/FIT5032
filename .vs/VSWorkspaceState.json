@@ -1,13 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\week3\\FIT5032_MyCodeSnippet",
     "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet",
-    "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Controllers",
     "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Views",
     "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Views\\Home",
+    "\\week4",
     "\\week4\\FlT5032_MyModelFirst",
-    "\\week4\\FlT5032_MyModelFirst\\FlT5032_MyModelFirst"
+    "\\week4\\FlT5032_MyModelFirst\\FlT5032_MyModelFirst",
+    "\\week4\\FlT5032_MyModelFirst\\FlT5032_MyModelFirst\\Views",
+    "\\week4\\FlT5032_MyModelFirst\\FlT5032_MyModelFirst\\Views\\Shared"
   ],
-  "SelectedNode": "\\week3",
+  "SelectedNode": "\\week4\\FlT5032_MyModelFirst\\FlT5032_MyModelFirst\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }
