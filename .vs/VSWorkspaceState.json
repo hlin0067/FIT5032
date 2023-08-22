@@ -1,12 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\week3",
-    "\\week3\\FIT5032_MyCodeSnippet",
     "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet",
     "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Views",
-    "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Views\\Home"
+    "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Views\\Home",
+    "\\week4"
   ],
-  "SelectedNode": "\\week3\\FIT5032_MyCodeSnippet\\FIT5032_MyCodeSnippet\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\week4",
   "PreviewInSolutionExplorer": false
 }
