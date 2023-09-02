@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<p>Date:<input type="text" id="datepicker" size="30"><p/>
+@section scripts{
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+            $("#datepicker").datepicker("setDate", "08/20/2023");
+        });
+    </script>
+    }
