@@ -33,7 +33,6 @@ namespace FIT5032_MyViewModel.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 String FirstName = model.FirstName;
                 String LastName = model.LastName;
                 ViewBag.FullName = FirstName + " " + LastName;
