@@ -45,6 +45,7 @@ namespace project100207.Controllers
         public ActionResult Create()
         {
             ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Id");
+            ViewBag.AspNetUsersId = User.Identity.GetUserId();
             return View();
         }
 
@@ -62,6 +63,7 @@ namespace project100207.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Doctor = new SelectList(db.AspNetUsers, "Id", "Id", appointment.AspNetUsersId);
+            ViewBag.AspNetUsersId = User.Identity.GetUserId();
             //ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Email", appointment.AspNetUsersId);
             return View(appointment);
         }
@@ -78,7 +80,8 @@ namespace project100207.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Email", appointment.AspNetUsersId);
+            ViewBag.AspNetUsersId = User.Identity.GetUserId();
+            //ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Email", appointment.AspNetUsersId);
             return View(appointment);
         }
 
@@ -95,7 +98,8 @@ namespace project100207.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Email", appointment.AspNetUsersId);
+            //ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Email", appointment.AspNetUsersId);
+            ViewBag.AspNetUsersId = User.Identity.GetUserId();
             return View(appointment);
         }
 
