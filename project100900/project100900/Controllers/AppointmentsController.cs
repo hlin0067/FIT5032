@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using project100900.Models;
 
 namespace project100900.Controllers
@@ -44,10 +45,14 @@ namespace project100900.Controllers
         // POST: Appointments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AppointmentID,UserId,DoctorName,DoctorId,Date,Description")] Appointment appointment)
         {
+            appointment.UserId = User.Identity.GetUserId();
+            ModelState.Clear();
+            TryValidateModel(appointment);
             if (ModelState.IsValid)
             {
                 db.Appointments.Add(appointment);

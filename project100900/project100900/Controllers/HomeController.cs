@@ -1,6 +1,10 @@
-﻿using System;
+﻿using project100900.Models;
+using project100900.Util;
+using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +14,9 @@ namespace project100900.Controllers
     {
         public ActionResult Index()
         {
+            // Please comment out these codes once you have registered your API key.
+            //EmailSender es = new EmailSender();
+            //es.RegisterAPIKey();
             return View();
         }
 
@@ -19,10 +26,39 @@ namespace project100900.Controllers
 
             return View();
         }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Send_Email()
+        {
+            return View(new SendEmail());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Send_Email(SendEmail model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    String toEmail = model.ToEmail;
+                    String subject = model.Subject;
+                    String contents = model.Contents;
+                    HttpPostedFileBase attachment = model.Attachment;
+                    EmailSender es = new EmailSender();
+                    await es.SendAsync(toEmail, subject, contents,attachment);
+                    ViewBag.Result = "Email has been send.";
+                    ModelState.Clear();
+                    return View(new SendEmail());
+                }
+                catch
+                {
+                    return View();
+                }
+            }
 
             return View();
         }

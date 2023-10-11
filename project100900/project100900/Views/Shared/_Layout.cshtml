@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -9,6 +11,7 @@
 
 </head>
 <body>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -24,6 +27,8 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("SendEmail", "Send_Email", "Home")</li>
+                    <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -38,7 +43,22 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    <script>
+        function toggleDarkMode() {
+            var body = document.body;
+            if (body.classList.contains('dark-mode')) {
+                console.log("Switching to light mode");
+                body.classList.remove('dark-mode');
+                localStorage.setItem('dark-mode', 'false');
+            } else {
+                console.log("Switching to dark mode");
+                body.classList.add('dark-mode');
+                localStorage.setItem('dark-mode', 'true');
+            }
+        }
+    </script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

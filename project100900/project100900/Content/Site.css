@@ -28,3 +28,11 @@ textarea {
     background-color: #777;
     border-color: #fff
 }
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+    background-color: #333;
+}

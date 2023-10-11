@@ -106,3 +106,7 @@ C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\obj\Debug\pro
 C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\obj\Debug\project100900.csproj.CopyComplete
 C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\obj\Debug\project100900.dll
 C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\obj\Debug\project100900.pdb
+C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\bin\SendGrid.dll
+C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\bin\StarkbankEcdsa.dll
+C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\bin\SendGrid.pdb
+C:\Users\hlin0067\source\repos\FIT5032\project100900\project100900\bin\SendGrid.xml
