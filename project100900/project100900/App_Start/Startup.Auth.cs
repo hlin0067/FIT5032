@@ -58,11 +58,11 @@ namespace project100900
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "131204238176-8a7h9cn0sai7fr4eqml0isk099auen5v.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }
