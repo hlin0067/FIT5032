@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FIT5032 Studio 8 - No API Key\\FIT5032_Week08A",
-    "\\project100900\\project100900\\Controllers",
-    "\\project100900\\project100900\\Views",
-    "\\project100900\\project100900\\Views\\Appointments",
-    "\\project100900\\project100900\\Views\\Home"
+    "\\project100207",
+    "\\project100207\\project100207",
+    "\\project100207\\project100207\\Controllers"
   ],
-  "SelectedNode": "\\FIT5032 Studio 8 - No API Key",
+  "SelectedNode": "\\project100207\\project100207\\Controllers\\AccountController.cs",
   "PreviewInSolutionExplorer": false
 }

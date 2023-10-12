@@ -7,18 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using project100900.Models;
 
 namespace project100900.Controllers
 {
     public class AppointmentsController : Controller
     {
-        private AppointmentViewModel db = new AppointmentViewModel();
+        private Appointmentviewmodel db = new Appointmentviewmodel();
 
         // GET: Appointments
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.Appointments.ToList());
+            var userId = User.Identity.GetUserId();
+            var appointments = db.Appointments.Where(s => s.UserId ==
+            userId).ToList();
+            return View(appointments);
         }
 
         // GET: Appointments/Details/5
@@ -37,20 +42,39 @@ namespace project100900.Controllers
         }
 
         // GET: Appointments/Create
+        [Authorize]
         public ActionResult Create()
         {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var doctorRole = roleManager.FindByName("Doctor");
+            var doctorRoleId = roleManager.FindByName("Doctor").Id;
+            var doctors = userManager.Users.Where(u => u.Roles.Any(r => r.RoleId == doctorRoleId)).ToList();
+            List<string> doctorUserNames = doctors.Select(d => d.UserName).ToList();
+            ViewBag.DoctorUserNames = doctorUserNames;
             return View();
         }
 
         // POST: Appointments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Create([Bind(Include = "AppointmentID,UserId,DoctorName,DoctorId,Date,Description")] Appointment appointment)
         {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             appointment.UserId = User.Identity.GetUserId();
+            var doctor = userManager.FindByName(appointment.DoctorName);
+            if (doctor != null)
+            {
+                appointment.DoctorId = doctor.Id; // 设置DoctorId为找到的医生的UserId
+            }
+            else
+            {
+                ModelState.AddModelError("", "No doctor found with the specified name."); // 如果没有找到医生，向模型状态添加错误
+            }
+
             ModelState.Clear();
             TryValidateModel(appointment);
             if (ModelState.IsValid)
