@@ -30,6 +30,8 @@
                     <li>@Html.ActionLink("SendEmail", "Send_Email", "Home")</li>
                     <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
                     <li>@Html.ActionLink("Images", "Index", "Images")</li>
+                    <li>@Html.ActionLink("Rating", "ListDoctorsForRating", "Rating")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -62,6 +64,7 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

@@ -181,9 +181,19 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310090858251_InitialCreate.cs" />
+    <Compile Include="Migrations\202310090858251_InitialCreate.designer.cs">
+      <DependentUpon>202310090858251_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310131302540_addapp.cs" />
+    <Compile Include="Migrations\202310131302540_addapp.designer.cs">
+      <DependentUpon>202310131302540_addapp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Appointmentviewmodel.cs" />
@@ -192,6 +202,8 @@
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\RatingVewModel.cs" />
     <Compile Include="Models\SendEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -507,6 +519,8 @@
     <Content Include="Views\Images\Details.cshtml" />
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Images\Index.cshtml" />
+    <Content Include="Views\Rating\ListDoctorsForRating.cshtml" />
+    <Content Include="Views\Rating\RateDoctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Upload\" />
@@ -523,6 +537,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310090858251_InitialCreate.resx">
+      <DependentUpon>202310090858251_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310131302540_addapp.resx">
+      <DependentUpon>202310131302540_addapp.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

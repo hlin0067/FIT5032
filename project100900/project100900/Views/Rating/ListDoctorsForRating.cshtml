@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ListDoctorsForRating";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListDoctorsForRating</h2>
+@model IEnumerable<project100900.Models.ApplicationUser>
+
+<h2>Doctors for Rating</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Average Rating</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.UserName</td>
+                <td>@(doctor.RatingCount > 0 ? doctor.TotalRating / doctor.RatingCount : 0)</td>
+                <td>@Html.ActionLink("Rate", "RateDoctor", new { DoctorName = doctor.UserName })</td>
+            </tr>
+        }
+    </tbody>
+</table>
