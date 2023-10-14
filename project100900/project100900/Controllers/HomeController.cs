@@ -1,4 +1,7 @@
-﻿using project100900.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+using project100900.Models;
 using project100900.Util;
 using SendGrid.Helpers.Mail;
 using System;
@@ -10,19 +13,31 @@ using System.Web.Mvc;
 
 namespace project100900.Controllers
 {
+
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context = new ApplicationDbContext();
+        private RatingVewModel db = new RatingVewModel();
         public ActionResult Index()
         {
-            // Please comment out these codes once you have registered your API key.
-            //EmailSender es = new EmailSender();
-            //es.RegisterAPIKey();
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var doctorRole = roleManager.FindByName("Doctor");
+            var doctorRoleId = roleManager.FindByName("Doctor").Id;
+            var doctors = userManager.Users.Where(u => u.Roles.Any(r => r.RoleId == doctorRoleId)).ToList();
+            
+            Dictionary<string, decimal> ratingDic = new Dictionary<string, decimal>();
+
+            foreach (var d in doctors)
+            {
+                ratingDic.Add(d.UserName, d.RatingCount > 0 ? d.TotalRating / d.RatingCount : 0);
+            }
+            ViewBag.ratingDic = JsonConvert.SerializeObject(ratingDic);
 
             return View();
         }

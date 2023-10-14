@@ -21,7 +21,8 @@ namespace project100900.Models
         [Required]
         [StringLength(255)]
         public string DoctorId { get; set; }
-
+        // [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
 
         [StringLength(255)]
