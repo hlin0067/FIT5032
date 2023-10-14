@@ -44,12 +44,12 @@ namespace project100900.Controllers
             {
                 try
                 {
-                    String toEmail = model.ToEmail;
+                    List<string> toEmails = model.ToEmail.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(email => email.Trim()).ToList();
                     String subject = model.Subject;
                     String contents = model.Contents;
                     HttpPostedFileBase attachment = model.Attachment;
                     EmailSender es = new EmailSender();
-                    await es.SendAsync(toEmail, subject, contents,attachment);
+                    await es.SendAsync(toEmails, subject, contents, attachment);
                     ViewBag.Result = "Email has been send.";
                     ModelState.Clear();
                     return View(new SendEmail());
