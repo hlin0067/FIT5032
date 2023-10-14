@@ -225,3 +225,6 @@ C:\Users\hlin0067\source\repos\New\project100900\project100900\obj\Debug\project
 C:\Users\hlin0067\source\repos\New\project100900\project100900\obj\Debug\project100900.Migrations.InitialCreate.resources
 C:\Users\hlin0067\source\repos\New\project100900\project100900\obj\Debug\project100900.csproj.GenerateResource.cache
 C:\Users\hlin0067\source\repos\New\project100900\project100900\obj\Debug\project100900.Migrations.addapp.resources
+C:\Users\hlin0067\Source\Repos\FIT5032\project100900\project100900\obj\Debug\project100900.Migrations.InitialCreate.resources
+C:\Users\hlin0067\Source\Repos\FIT5032\project100900\project100900\obj\Debug\project100900.Migrations.addapp.resources
+C:\Users\hlin0067\Source\Repos\FIT5032\project100900\project100900\obj\Debug\project100900.csproj.GenerateResource.cache

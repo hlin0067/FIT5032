@@ -20,9 +20,14 @@ namespace project100900.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            if (User.IsInRole("Admin"))
+            {
+                var allappointments = db.Appointments.ToList();
+                return View(allappointments);
+            }
             var userId = User.Identity.GetUserId();
             var appointments = db.Appointments.Where(s => s.UserId ==
-            userId).ToList();
+            userId||s.DoctorId == userId).ToList();
             return View(appointments);
         }
 
