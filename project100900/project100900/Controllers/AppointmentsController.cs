@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using project100900.Models;
+using Rotativa;
 
 namespace project100900.Controllers
 {
@@ -136,6 +137,14 @@ namespace project100900.Controllers
                 return HttpNotFound();
             }
             return View(appointment);
+        }
+        public ActionResult PrintPDF()
+        {
+            var Data = db.Appointments.ToList();
+            return new PartialViewAsPdf("PrintPDF", Data)
+            {
+                FileName = "TestPartialViewAsPdf.pdf"
+            };
         }
 
         // POST: Appointments/Delete/5

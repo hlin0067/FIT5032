@@ -1,0 +1,41 @@
+﻿@model List<project100900.Models.Appointment>
+<style>
+    thead {
+        background-color: black;
+        color: white;
+    }
+
+    table {
+        border: 1px solid black;
+    }
+
+    td, th {
+        padding: 5px;
+        font-size: 14px;
+    }
+</style>
+<table class="table table-bordered table-striped" border="1" style="border-color: black">
+    <thead>
+        <tr>
+            <th>AppointmentId</th>
+            <th>UserId</th>
+            <th>DoctorName</th>
+            <th>DoctorId</th>
+            <th>Date</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AppointmentID</td>
+                <td>@item.UserId</td>
+                <td>@item.DoctorName</td>
+                <td>@item.DoctorId</td>
+                <td>@item.Date</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
