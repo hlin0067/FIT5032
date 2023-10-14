@@ -8,7 +8,12 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @* This is for the mapbox map. *@
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    @*This is used for the Geocoding Mapbox API*@
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-glgeocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-glgeocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
 </head>
 <body>
     <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
@@ -31,6 +36,7 @@
                     <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
                     <li>@Html.ActionLink("Images", "Index", "Images")</li>
                     <li>@Html.ActionLink("Rating", "ListDoctorsForRating", "Rating")</li>
+                    <li>@Html.ActionLink("Location", "Index", "Locations")</li>
 
                 </ul>
                 @Html.Partial("_LoginPartial")
