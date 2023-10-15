@@ -1,13 +1,28 @@
 ﻿@model IEnumerable<project100900.Models.Location>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Index</h2>
-<div id="map" style="height:300px"></div>
 
+<h2>Index</h2>
+<div id='map' style='width: 400px;height:300px;'></div>
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    @*This is used for the Geocoding Mapbox API*@
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGVyeTExMTMiLCJhIjoiY2xucHI1a201MHEzYjJqbGdpZW03ZnB0dCJ9.GgZ0WS63qmsdukDHO-o7_A'; // 替换为您的Mapbox访问令牌
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10'
+        });
+
+    </script>
+</head>
 <br />
 <p>
     @Html.ActionLink("Create New", "Create", "Locations", new { @class = "btn btn-primary" })
@@ -53,22 +68,5 @@
 </table>
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaGVyeTExMTMiLCJhIjoiY2xucHI1a201MHEzYjJqbGdpZW03ZnB0dCJ9.GgZ0WS63qmsdukDHO-o7_A'; // 替换为您的Mapbox访问令牌
 
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v10'
-        });
-        $(".coordinates").each(function () {
-            var name = $(this).find(".description").text();
-            var lat = parseFloat($(this).find(".latitude").text());
-            var lon = parseFloat($(this).find(".longitude").text());
-
-            new mapboxgl.Marker()
-                .setLngLat([lon, lat])
-                .setPopup(new mapboxgl.Popup().setText(name))
-                .addTo(map);
-        });
-    </script>
 }

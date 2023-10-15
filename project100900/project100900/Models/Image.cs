@@ -10,6 +10,7 @@ namespace project100900.Models
     public partial class Image
     {
         public int ImageId { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
 
         public DateTime Date { get; set; }
 
