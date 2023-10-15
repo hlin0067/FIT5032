@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using project100900.Models;
 
 namespace project100900.Controllers
@@ -16,10 +17,18 @@ namespace project100900.Controllers
         private ImageViewModel db = new ImageViewModel();
 
         // GET: Images
+        [Authorize]
         public ActionResult Index()
         {
-            var images = db.Images.Include(i => i.AspNetUser);
-            return View(images.ToList());
+            if (User.IsInRole("Admin"))
+            {
+                var allImages = db.Images.ToList();
+                return View(allImages);
+            }
+            var userId = User.Identity.GetUserId();
+            var images = db.Images.Where(s => s.UserId ==
+            userId).ToList();
+            return View(images);
         }
 
         // GET: Images/Details/5
@@ -38,6 +47,7 @@ namespace project100900.Controllers
         }
 
         // GET: Images/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email");
@@ -72,6 +82,7 @@ namespace project100900.Controllers
         }
 
         // GET: Images/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -105,6 +116,7 @@ namespace project100900.Controllers
         }
 
         // GET: Images/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

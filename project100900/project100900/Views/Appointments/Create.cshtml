@@ -15,8 +15,6 @@
     }
 </style>
 
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -25,13 +23,6 @@
         <h4>Appointment</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DoctorName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,18 +32,12 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.DoctorId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DoctorId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DoctorId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
         <div id="calendar"></div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control"}})
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -79,33 +64,51 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        //$(function () {
-        //$("#datepicker").datepicker(
-        //{
-        // minDate: 0,
-        //maxDate: "+10D"
-        //});
-        //});
+<script>
         $(document).ready(function () {
-            var calendarEl = document.getElementById('calendar');
-            var selectedDateInput = $('<input>').attr({
-                type: 'hidden',
-                id: 'selectedDate',
-                name: 'Date'
-            }).appendTo('form');
+    var appdic = @Html.Raw(ViewBag.appdic);
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                dateClick: function (info) {
-                    selectedDateInput.val(info.dateStr); // 设置隐藏字段的值为所选日期
-                    $(calendarEl).find('.selected-date').removeClass('selected-date');
-                    info.dayEl.classList.add('selected-date');
-                }
+    var eventsArray = [];
+    for (var key in appdic) {
+        eventsArray.push({
+            id: key,
+            start: new Date(appdic[key]),
+            title: "Appointment",
+            allDay: true
+        });
+    }
+
+    var today = new Date();
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: eventsArray,
+        validRange: {
+            start: today
+        },
+        dateClick: function (info) {
+            console.log('Clicked date:', info.dateStr);
+            var dateEvents = calendar.getEvents().filter(e => {
+                return e.startStr === info.dateStr;
             });
 
-            calendar.render();
-        });
-    </script>
-}
+            if (dateEvents.length > 0) {
+                alert('This date already has an event. Please choose another date.');
+                return;
+            }
 
+            $('#@Html.IdFor(model => model.Date)').val(info.dateStr);
+            $(calendarEl).find('.selected-date').removeClass('selected-date');
+            info.dayEl.classList.add('selected-date');
+        }
+    });
+
+    calendar.render();
+});
+
+
+
+
+
+</script>
+}

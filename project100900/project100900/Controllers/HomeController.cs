@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace project100900.Controllers
 {
@@ -22,8 +23,8 @@ namespace project100900.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        [Authorize(Roles = "Admin,Doctor")]
+        public ActionResult RatingChart()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
@@ -41,12 +42,7 @@ namespace project100900.Controllers
 
             return View();
         }
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        [Authorize(Roles = "Admim,Doctor")]
         public ActionResult Send_Email()
         {
             return View(new SendEmail());

@@ -13,6 +13,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using project100900.Models;
 using Rotativa;
+using Newtonsoft.Json;
+using project100900.Migrations;
 
 namespace project100900.Controllers
 {
@@ -36,6 +38,7 @@ namespace project100900.Controllers
         }
 
         // GET: Appointments/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -60,6 +63,14 @@ namespace project100900.Controllers
             var doctorRoleId = roleManager.FindByName("Doctor").Id;
             var doctors = userManager.Users.Where(u => u.Roles.Any(r => r.RoleId == doctorRoleId)).ToList();
             List<string> doctorUserNames = doctors.Select(d => d.UserName).ToList();
+            var userId = User.Identity.GetUserId();
+            var appointments = db.Appointments.Where(s => s.UserId == userId).ToList();
+            Dictionary<int, DateTime> appdic = new Dictionary<int, DateTime>();
+            foreach (var appointment in appointments)
+            {
+                appdic.Add(appointment.AppointmentID, appointment.Date);
+            }
+            ViewBag.appdic = JsonConvert.SerializeObject(appdic);
             ViewBag.DoctorUserNames = doctorUserNames;
             return View();
         }

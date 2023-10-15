@@ -8,7 +8,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @* This is for the mapbox map. *@
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
     @*This is used for the Geocoding Mapbox API*@
@@ -30,8 +29,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("RatingChart", "RatingChart", "Home")</li>
+                    
                     <li>@Html.ActionLink("SendEmail", "Send_Email", "Home")</li>
                     <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
                     <li>@Html.ActionLink("Images", "Index", "Images")</li>
