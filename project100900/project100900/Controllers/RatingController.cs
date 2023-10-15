@@ -24,7 +24,6 @@ namespace project100900.Controllers
             var doctorRole = roleManager.FindByName("Doctor");
             var doctorRoleId = roleManager.FindByName("Doctor").Id;
             var doctors = userManager.Users.Where(u => u.Roles.Any(r => r.RoleId == doctorRoleId)).ToList();
-            
             return View(doctors);
         }
         [HttpGet]

@@ -20,7 +20,7 @@ namespace project100900.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            if (User.IsInRole("Admin"))
+            if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
             {
                 var allImages = db.Images.ToList();
                 return View(allImages);
