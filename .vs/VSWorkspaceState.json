@@ -3,8 +3,11 @@
     "",
     "\\project100207",
     "\\project100207\\project100207",
-    "\\project100207\\project100207\\Controllers"
+    "\\project100900",
+    "\\project100900\\project100900",
+    "\\project100900\\project100900\\Views",
+    "\\project100900\\project100900\\Views\\Images"
   ],
-  "SelectedNode": "\\project100207\\project100207\\Controllers\\AccountController.cs",
+  "SelectedNode": "\\project100900\\project100900\\Views\\Images\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }
