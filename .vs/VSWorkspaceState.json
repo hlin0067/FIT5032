@@ -1,13 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\project100207",
-    "\\project100207\\project100207",
     "\\project100900",
     "\\project100900\\project100900",
     "\\project100900\\project100900\\Views",
     "\\project100900\\project100900\\Views\\Images"
   ],
-  "SelectedNode": "\\project100900\\project100900\\Views\\Images\\Create.cshtml",
+  "SelectedNode": "\\project100900\\project100900.sln",
   "PreviewInSolutionExplorer": false
 }

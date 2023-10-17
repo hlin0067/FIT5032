@@ -42,7 +42,7 @@ namespace project100900.Controllers
 
             return View();
         }
-        [Authorize(Roles = "Admim,Doctor")]
+        [Authorize(Roles = "Admin,Doctor")]
         public ActionResult Send_Email()
         {
             return View(new SendEmail());
